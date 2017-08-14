@@ -1,3 +1,7 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class TestProductsModel(TestCase):
+
+    def test_setup(self):
+        assert True
