@@ -61,8 +61,6 @@ class TestProductListSelectRelated(ProductsTestMixin, TestCase):
 
     def test_product_list_queries(self):
         """Test product list number of queries."""
-        products_count = Product.objects.count()
-
         # Num queries is equal to 1 because we are using select related
         with self.assertNumQueries(1):
             product_list_select_related()
