@@ -4,7 +4,7 @@
 [![CircleCI](https://circleci.com/gh/LucasMagnum/django-tip-02.svg?style=shield)](https://circleci.com/gh/LucasMagnum/django-tip-02)
 
 
-This is just a sample app used in  [Select & Prefetch related](https://medium.com/@lucasmagnum/{post_url}).
+This is just a sample app used in  [Select & Prefetch related](https://medium.com/@lucasmagnum/djangotip-select-prefetch-related-e76b683aa457).
 
 
 ### How to use it
@@ -44,6 +44,6 @@ Run the command bellow to run the tests
 
 ### Useful links
 
-  1 - [Select & Prefetch related](https://medium.com/@lucasmagnum/{post_url})
+  1 - [Select & Prefetch related](https://medium.com/@lucasmagnum/djangotip-select-prefetch-related-e76b683aa457)
 
 
