@@ -28,9 +28,12 @@ class Command(BaseCommand):
         self.stdout.write("Generating subcatories")
 
         # The first 5 catories will have 10 subcatories each
-        for category in Category.objects.all()[:5]:
-            subcategories = Category.objects.filter(id__gt=category.id * 10)
+        for num, category in enumerate(Category.objects.all()[:5]):
+            subcategories = Category.objects.filter(
+                id__gt=category.id + 10 * num
+            )
             category.subcategories = subcategories[:10]
+            category.save()
 
         self.stdout.write("Generating products")
 
