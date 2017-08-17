@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from ..models import Category, Product
-from ..queries import product_list, product_list_select_related
+from ..queries import products_list, products_list_select_related
 
 
 class ProductsTestMixin(object):
@@ -16,9 +16,9 @@ class ProductsTestMixin(object):
 
 
 class TestProductList(ProductsTestMixin, TestCase):
-    def test_product_list_return_all_products(self):
-        """Test product list return all products."""
-        products = product_list()
+    def test_products_list_return_all_products(self):
+        """Test products list return all products."""
+        products = products_list()
 
         assert len(products) == Product.objects.count()
 
@@ -30,23 +30,23 @@ class TestProductList(ProductsTestMixin, TestCase):
             }
             assert product_data in products
 
-    def test_product_list_queries(self):
-        """Test product list number of queries."""
+    def test_products_list_queries(self):
+        """Test products list number of queries."""
         products_count = Product.objects.count()
 
         # Num queries is equal the number of products + 1
         # For each product we run one new query to get category
         # and we have the first query to get all products
         with self.assertNumQueries(products_count + 1):
-            product_list()
+            products_list()
 
 
 class TestProductListSelectRelated(ProductsTestMixin, TestCase):
-    def test_product_list_select_related_return_all_products(self):
-        """Test product list return all products."""
-        assert product_list() == product_list_select_related()
+    def test_products_list_select_related_return_all_products(self):
+        """Test products list return all products."""
+        assert products_list() == products_list_select_related()
 
-        products = product_list_select_related()
+        products = products_list_select_related()
 
         assert len(products) > 1
         assert len(products) == Product.objects.count()
@@ -59,8 +59,8 @@ class TestProductListSelectRelated(ProductsTestMixin, TestCase):
             }
             assert product_data in products
 
-    def test_product_list_queries(self):
-        """Test product list number of queries."""
+    def test_products_list_queries(self):
+        """Test products list number of queries."""
         # Num queries is equal to 1 because we are using select related
         with self.assertNumQueries(1):
-            product_list_select_related()
+            products_list_select_related()
